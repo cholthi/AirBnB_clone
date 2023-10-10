@@ -6,4 +6,42 @@ from datetime import datetime
 
 class BaseModel:
     """represents base class for AirBnB model classed"""
-    pass
+
+    def __init__(self, *args, **kwargs):
+        """Initializes all models for
+
+           Args:
+               *args (any): Variable arguments
+               **kwargs (any): attributes for child classes
+        """
+        time_format = '%Y-%m-%d %H:%M:%S'
+        self.id = str(uuid.uuidv4())
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
+
+        if len(kwargs) > 0:
+            for k, v in kwargs.items():
+                if k == "created_at" or k == "updated_at":
+                    self.__dict__[k] = datetime.strptime(v, time_format)
+                else:
+                    self.__dict__[k] = v
+        else:
+            models.storage.new(self)
+
+    def to_dict(self):
+        """Convert an instance of the model class to dict"""
+        return_dict = self.__dict__.copy()
+        return_dict["updated_at"] = self.updated.isoformat()
+        return_dict["created_at"] = self.created_at.isoformat()
+        return_dict["__class__"] = self.__class__.__name__
+        return return_dict
+
+    def save(self):
+        """Saves the the model to the connected storage engine"""
+        self.updated_at = datetime.today()
+        models.storage.save()
+
+    def __str__(self):
+        """Return a string representation for this BaseModel"""
+
+        return f"{self.__class__.__name__}[{self.id} {self.__dict__}]"
