@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """A file storage engine for AirBnB objects"""
 import json
+from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
 from models.state import State
