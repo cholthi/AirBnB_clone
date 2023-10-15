@@ -16,9 +16,11 @@ class TestBEngine_instantiation(unittest.TestCase):
 
     def test_new(self):
         len1 = len(models.storage.all())
-        bm1 = BaseModel() # Creating empty BaseModel calls new function
+        # Creating empty BaseModel calls new function
+        bm1 = BaseModel()
         len2 = len(models.storage.all())
         self.assertLess(len1, len2)
+
 
 if __name__ == "__main__":
     unittest.main()

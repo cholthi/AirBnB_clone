@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """A file storage engine for AirBnB objects"""
 import json
-from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
 from models.state import State
-from models.user  import User
+from models.user import User
 from models.place import Place
 from models.review import Review
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -32,7 +32,8 @@ class FileStorage:
 
     def save(self):
         """Serializes objects"""
-        store_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        store_dict = {key: obj.to_dict() for key, obj in
+                      self.__objects.items()}
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
             json.dump(store_dict, f)
 
@@ -47,4 +48,3 @@ class FileStorage:
                     self.new(eval(clsname)(**clsdict))
         except FileNotFoundError:
             pass
-
