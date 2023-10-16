@@ -1,14 +1,40 @@
-#!/usr/bin/env python3
-"""Unit tests for city models"""
+#!/usr/bin/python3
+"""Unit testing user model"""
+
 import unittest
-from models.city import City
+from datetime import datetime
 import models
+from models.base_model import BaseModel
+from models.city import City
 
-TestCity_Instantiation(unittest.TestCase):
-    """City model unit tests cases"""
 
-    def test_instantiation_with_no_args(self):
-        self.assertEqual(City, type(City()))
+class TestUser(unittest.TestCase):
+    """Tests user model"""
+    def setUp(self):
+        """Creates instance of user class"""
+        self.city = City()
+        self.storedData = models.storage.all()
+        self.className = self.city.__class__.__name__
 
-    def test_object_is_added_to_storage(self):
-        self.assertIn(City(), models.storage.all().values())
+    def test_instance(self):
+        """Test City instance"""
+        self.assertIsInstance(self.city, BaseModel)
+
+    def test_city_name(self):
+        """Tests City fields"""
+        self.assertEqual(str, type(self.city.name))
+        self.assertEqual(str, type(self.city.state_id))
+
+        self.assertEqual("", self.storedData[
+                             f"{self.className}.{self.city.id}"].name)
+
+    def test_parent_property_created_at(self):
+        """Test time created"""
+        self.assertEqual(datetime, type(self.city.created_at))
+
+    def test_new_instance_stored_in_objects(self):
+        self.assertIn(self.city, self.storedData.values())
+
+
+if __name__ == "__main__":
+    unittest.main()

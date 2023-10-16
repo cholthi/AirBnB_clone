@@ -2,6 +2,7 @@
 """ A city class entity """
 from models.base_model import BaseModel
 
+
 class City(BaseModel):
     """City model class
 
@@ -11,4 +12,3 @@ class City(BaseModel):
     """
     state_id = ""
     name = ""
-
