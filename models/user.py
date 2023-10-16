@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 
 class User(BaseModel):
     """ A user class entity
-      
+
         Attributes:
                 email (str): The email of the user
                 password (str): user password
