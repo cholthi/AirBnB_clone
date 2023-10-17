@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Unit tests for BaseModels"""
 from datetime import datetime
 import os
