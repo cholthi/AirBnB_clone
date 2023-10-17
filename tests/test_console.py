@@ -10,4 +10,3 @@ class TestConsole(unittest.TestCase):
     HBNBCommand class.
     """
     pass
-
