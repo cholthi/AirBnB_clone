@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Defines BaseClass for all AirBnB model objects"""
 import uuid
 from datetime import datetime
