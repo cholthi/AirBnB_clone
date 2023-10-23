@@ -6,7 +6,7 @@ from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
 
-class TestBEngine_instantiation(unittest.TestCase):
+class TestFileStorage_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the FileStorage class."""
     def test_no_args_instantiates(self):
         self.assertEqual(FileStorage, type(FileStorage()))
